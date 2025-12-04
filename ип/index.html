@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математические калькуляторы</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <header class="header">
+            <h1><i class="fas fa-calculator"></i> Математические калькуляторы</h1>
+            <p class="subtitle">Выберите тип калькулятора для работы</p>
+        </header>
+
+        <!-- Выбор типа калькулятора -->
+        <div class="calculator-selector">
+            <div class="selector-buttons">
+                <button class="calc-btn active" data-calc="1">
+                    <i class="fas fa-calculator"></i>
+                    <span>Обычный калькулятор</span>
+                </button>
+                <button class="calc-btn" data-calc="2">
+                    <i class="fas fa-square-root-alt"></i>
+                    <span>Квадратные уравнения</span>
+                </button>
+                <button class="calc-btn" data-calc="3">
+                    <i class="fas fa-equals"></i>
+                    <span>Линейные уравнения</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Контейнер для калькуляторов -->
+        <div class="calculator-container">
+            
+            <!-- Калькулятор 1: Обычный калькулятор -->
+            <div id="calculator1" class="calc-section active">
+                <div class="calc-header">
+                    <h2><i class="fas fa-calculator"></i> Обычный калькулятор</h2>
+                    <p class="description">Введите математическое выражение (например: 2+3*4, (5-2)/3)</p>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="expression" placeholder="Введите выражение (например: 2+3*4)" class="input-field">
+                    <button id="calculateBtn" class="action-btn">
+                        <i class="fas fa-equals"></i> Вычислить
+                    </button>
+                </div>
+                
+                <div class="calculator-keypad">
+                    <div class="keypad-row">
+                        <button class="keypad-btn" data-key="7">7</button>
+                        <button class="keypad-btn" data-key="8">8</button>
+                        <button class="keypad-btn" data-key="9">9</button>
+                        <button class="keypad-btn operator" data-key="+">+</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="keypad-btn" data-key="4">4</button>
+                        <button class="keypad-btn" data-key="5">5</button>
+                        <button class="keypad-btn" data-key="6">6</button>
+                        <button class="keypad-btn operator" data-key="-">-</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="keypad-btn" data-key="1">1</button>
+                        <button class="keypad-btn" data-key="2">2</button>
+                        <button class="keypad-btn" data-key="3">3</button>
+                        <button class="keypad-btn operator" data-key="*">×</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="keypad-btn" data-key="0">0</button>
+                        <button class="keypad-btn" data-key=".">.</button>
+                        <button class="keypad-btn" data-key="(">(</button>
+                        <button class="keypad-btn" data-key=")">)</button>
+                        <button class="keypad-btn operator" data-key="/">÷</button>
+                    </div>
+                    <div class="keypad-row">
+                        <button class="keypad-btn clear" data-key="clear">
+                            <i class="fas fa-backspace"></i> Очистить
+                        </button>
+                        <button class="keypad-btn equals" data-key="=">
+                            <i class="fas fa-equals"></i> 
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="result1" class="result-box">
+                    <div class="result-label">Результат:</div>
+                    <div class="result-value">Введите выражение</div>
+                </div>
+                
+                <div id="error1" class="error-box hidden">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span class="error-text"></span>
+                </div>
+            </div>
+
+            <!-- Калькулятор 2: Квадратные уравнения -->
+            <div id="calculator2" class="calc-section">
+                <div class="calc-header">
+                    <h2><i class="fas fa-square-root-alt"></i> Решение квадратных уравнений</h2>
+                    <p class="description">Введите коэффициенты a, b и c для уравнения: ax² + bx + c = 0</p>
+                    <p class="equation-example">Пример: 2x² - 5x + 3 = 0 → a=2, b=-5, c=3</p>
+                </div>
+                
+                <div class="coefficients">
+                    <div class="coeff-group">
+                        <label for="coeffA">Коэффициент a:</label>
+                        <input type="number" id="coeffA" step="any" placeholder="Например: 2" class="coeff-input">
+                    </div>
+                    <div class="coeff-group">
+                        <label for="coeffB">Коэффициент b:</label>
+                        <input type="number" id="coeffB" step="any" placeholder="Например: -5" class="coeff-input">
+                    </div>
+                    <div class="coeff-group">
+                        <label for="coeffC">Коэффициент c:</label>
+                        <input type="number" id="coeffC" step="any" placeholder="Например: 3" class="coeff-input">
+                    </div>
+                </div>
+                
+                <button id="solveQuadraticBtn" class="action-btn">
+                    <i class="fas fa-calculator"></i> Решить уравнение
+                </button>
+                
+                <div id="result2" class="result-box">
+                    <div class="result-label">Решение:</div>
+                    <div class="result-value">Введите коэффициенты</div>
+                </div>
+                
+                <div id="error2" class="error-box hidden">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span class="error-text"></span>
+                </div>
+                
+                <div class="explanation">
+                    <h3><i class="fas fa-info-circle"></i> Как это работает:</h3>
+                    <p>Дискриминант вычисляется по формуле: D = b² - 4ac</p>
+                    <ul>
+                        <li>Если D > 0: два корня: x₁,₂ = (-b ± √D) / (2a)</li>
+                        <li>Если D = 0: один корень: x = -b / (2a)</li>
+                        <li>Если D < 0: нет действительных корней</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Калькулятор 3: Линейные уравнения -->
+            <div id="calculator3" class="calc-section">
+                <div class="calc-header">
+                    <h2><i class="fas fa-equals"></i> Решение линейных уравнений</h2>
+                    <p class="description">Решает уравнения вида: Ax + B = C или A + Bx = C</p>
+                    <p class="note"><i class="fas fa-lightbulb"></i> Укажите, какие числа содержат переменную x</p>
+                </div>
+                
+                <div class="linear-equation">
+                    <div class="linear-group">
+                        <div class="linear-input-group">
+                            <label for="num1">Первое число (c₁):</label>
+                            <input type="number" id="num1" step="any" placeholder="Например: 3" class="linear-input">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="hasX1">
+                                <label for="hasX1">Содержит x</label>
+                            </div>
+                        </div>
+                        
+                        <div class="linear-input-group">
+                            <label for="num2">Второе число (c₂):</label>
+                            <input type="number" id="num2" step="any" placeholder="Например: -1" class="linear-input">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="hasX2">
+                                <label for="hasX2">Содержит x</label>
+                            </div>
+                        </div>
+                        
+                        <div class="linear-input-group">
+                            <label for="equals">Равно (c₃):</label>
+                            <input type="number" id="equals" step="any" placeholder="Например: 0" class="linear-input">
+                        </div>
+                    </div>
+                    
+                    <div class="equation-preview">
+                        <h4>Ваше уравнение:</h4>
+                        <div id="equationPreview" class="preview-box">
+                            Введите числа и отметьте, какие содержат x
+                        </div>
+                    </div>
+                    
+                    <button id="solveLinearBtn" class="action-btn">
+                        <i class="fas fa-calculator"></i> Найти x
+                    </button>
+                    
+                    <div id="result3" class="result-box">
+                        <div class="result-label">Решение:</div>
+                        <div class="result-value">Введите данные уравнения</div>
+                    </div>
+                    
+                    <div id="error3" class="error-box hidden">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="error-text"></span>
+                    </div>
+                </div>
+                
+                <div class="examples">
+                    <h3><i class="fas fa-list-ol"></i> Примеры:</h3>
+                    <div class="example-item">
+                        <strong>Пример 1:</strong> 3x - 1 = 0
+                        <ul>
+                            <li>c₁ = 3 (содержит x ✓)</li>
+                            <li>c₂ = -1 (не содержит x)</li>
+                            <li>c₃ = 0</li>
+                            <li>Ответ: x = 0.333...</li>
+                        </ul>
+                    </div>
+                    <div class="example-item">
+                        <strong>Пример 2:</strong> 5 + 2x = 11
+                        <ul>
+                            <li>c₁ = 5 (не содержит x)</li>
+                            <li>c₂ = 2 (содержит x ✓)</li>
+                            <li>c₃ = 11</li>
+                            <li>Ответ: x = 3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- История вычислений -->
+        <div class="history-section">
+            <h3><i class="fas fa-history"></i> История вычислений</h3>
+            <div id="historyList" class="history-list">
+                <div class="history-empty">Здесь будут отображаться ваши вычисления</div>
+            </div>
+            <button id="clearHistoryBtn" class="secondary-btn">
+                <i class="fas fa-trash"></i> Очистить историю
+            </button>
+        </div>
+                       <!-- Вставь этот блок ПЕРЕД footer в твой HTML -->
+<section class="git-section">
+    <h3><i class="fab fa-github"></i> Управление проектом через Git</h3>
+    <p>Этот проект готов к загрузке на GitHub и публикации в интернете.</p>
+    
+    <div class="git-controls">
+        <button class="git-btn terminal" id="showTerminalBtn">
+            <i class="fas fa-terminal"></i> Показать команды Git
+        </button>
+        <button class="git-btn github" id="copyGitCommands">
+            <i class="fas fa-copy"></i> Скопировать команды
+        </button>
+        <button class="git-btn deploy" id="deployBtn">
+            <i class="fas fa-rocket"></i> Развернуть на GitHub Pages
+        </button>
+    </div>
+    
+    <div id="terminalCode" class="terminal-code">
+        <div class="code-line"># Клонировать репозиторий</div>
+        <div class="code-line">git clone https://github.com/ваш-логин/math-calculators.git</div>
+        <div class="code-line">cd math-calculators</div>
+        <div class="code-line"></div>
+        <div class="code-line"># Добавить все файлы проекта</div>
+        <div class="code-line">git add .</div>
+        <div class="code-line"></div>
+        <div class="code-line"># Создать коммит</div>
+        <div class="code-line">git commit -m "Добавлены математические калькуляторы"</div>
+        <div class="code-line"></div>
+        <div class="code-line"># Отправить на GitHub</div>
+        <div class="code-line">git push origin main</div>
+        <div class="code-line"></div>
+        <div class="code-comment"># Чтобы включить GitHub Pages:</div>
+        <div class="code-comment"># 1. Зайдите в Settings → Pages на GitHub</div>
+        <div class="code-comment"># 2. Выберите ветку: main, папку: /root</div>
+        <div class="code-comment"># 3. Ваш сайт: https://github.com/desenderson/Mega-cool-super-awesome-fucking-calculator.git</div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p><i>на создание данного калькулятора я потратил 10 часов реального времени</i></p>
+    <p class="footer-note">code by DESS | Версия: 1.0.0</p>
+    <p class="git-info">
+        <i class="fab fa-git-alt"></i> Проект под контролем Git | 
+        <i class="fas fa-cloud-upload-alt"></i> Готов к деплою
+    </p>
+        <footer class="footer">
+            <p><i>на создание данного калькулятора я потратил 10 часов реального времени</i></p>
+            <p class="footer-note">code by DESS</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
