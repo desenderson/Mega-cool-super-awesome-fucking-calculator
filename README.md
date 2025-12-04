@@ -17,8 +17,3 @@ A web application with three types of mathematical calculators:
 - CSS3 (Flexbox, Grid)
 - Vanilla JavaScript
 - Git for version control
-
-## How to run locally
-1. Clone the repository:
-``bash
-https://github.com/desenderson/Mega-cool-super-awesome-fucking-calculator.git
